@@ -1,0 +1,72 @@
+#include <iostream>
+#include <stack>
+using namespace std;
+
+//stack using array
+
+class Stack{
+    public :
+        int *arr;
+        int top;
+        int size;
+        
+    Stack(int size){
+        this -> size = size;
+        arr = new int[size];
+        top = -1;
+    }
+    
+    void push(int element){
+        if (top == size-1){
+            cout<<"stack overflow"<<endl;
+        }
+        else{
+            top++;
+            arr[top] = element;
+        }
+    }
+    
+    void pop(){
+        if(top>=0){
+            top--;
+        }
+        else{
+            cout<<"stack underflow"<<endl;
+        }
+    }
+    
+    int peek(){
+        if(top>=0){
+            return arr[top];
+        }
+        else{
+            cout<<"stack underflow"<<endl;
+            return -1;
+        }
+    }
+    
+    bool isempty(){
+        if (top == -1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+};
+int main()
+{
+    // stack<int> s;
+    // s.push(2);
+    // cout << s.size();
+    
+    Stack s(5);
+    int n;
+    cin>>n;
+    s.push(n);
+    cout<< s.peek()  <<endl;
+    cout<< s.isempty() <<endl;
+    s.pop();
+
+    return 0;
+}
