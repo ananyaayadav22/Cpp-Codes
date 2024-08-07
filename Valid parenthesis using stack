@@ -1,0 +1,33 @@
+bool isValidParenthesis(string s) {
+  stack<char> stac;
+
+  for (int i = 0; i < s.length(); i++) {
+    char ch = s[i];
+
+    if (ch == '(' || ch == '{' || ch == '[') {
+      stac.push(ch);
+
+    } else {
+      if (!stac.empty()) {
+          char top = stac.top();
+        if ((top == '{' && ch == '}') || 
+            (top == '[' && ch == ']') ||
+            (top == '(' && ch == ')' )){
+                stac.pop();
+            }
+        else{
+            return false;
+        }
+      }
+      else{
+          return false;
+      }
+
+    }
+  }
+  if (stac.empty()){
+      return true;
+  } else {
+      return false;
+  }
+}
