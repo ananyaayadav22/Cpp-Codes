@@ -1,0 +1,21 @@
+#include <bits/stdc++.h> 
+stack<int> pushAtBottom(stack<int>& myStack, int x) 
+{
+    int n = myStack.size();
+    
+    int arr[n];
+    int i=0;
+    
+    while(!myStack.empty()){
+        arr[i] = myStack.top();
+        myStack.pop();
+        i++;
+    }
+
+    myStack.push(x);
+
+    for(int i=n-1; i>=0; i--){
+        myStack.push(arr[i]);
+    }
+    return myStack;
+}
