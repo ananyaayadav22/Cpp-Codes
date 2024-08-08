@@ -1,0 +1,30 @@
+#include <bits/stdc++.h> 
+void insertElement(stack<int> &stack, int element){
+	if(stack.empty() || stack.top() < element){
+        stack.push(element);
+        return ;
+    }
+
+    int x = stack.top();
+    stack.pop();
+
+    insertElement(stack, element);
+
+	stack.push(x);
+    
+}
+
+void sortStack(stack<int> &stack)
+{
+	if (stack.empty()){
+		return;
+	}
+	vector<int> vect;
+	int x = stack.top();
+	stack.pop();
+	
+	sortStack(stack);
+
+	insertElement(stack, x);
+
+}
