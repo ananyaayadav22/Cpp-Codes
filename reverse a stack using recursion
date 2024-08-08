@@ -1,0 +1,25 @@
+void insrtAtBottom(stack<int> &stack, int el){
+    if(stack.empty()){
+        stack.push(el);
+        return ;
+    }
+
+    int x = stack.top();
+    stack.pop();
+
+    insrtAtBottom(stack, el);
+    stack.push(x);
+}
+
+void reverseStack(stack<int> &stack) {
+    if(stack.empty()){
+        return ;
+    }
+    
+    int x = stack.top();
+    stack.pop();
+    
+    reverseStack(stack);
+
+    insrtAtBottom(stack, x);
+}
