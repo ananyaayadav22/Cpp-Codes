@@ -1,0 +1,58 @@
+#include <bits/stdc++.h> 
+class Queue {
+
+    int* arr;
+    int frontIndex;
+    int rear;
+    int size;
+
+public:
+    Queue() {
+        size = 10000;
+        arr = new int[size];
+        frontIndex = 0;
+        rear = 0;
+    }
+
+    /*----------------- Public Functions of Queue -----------------*/
+
+    bool isEmpty() {
+        if (frontIndex == rear){
+            return true;
+        }
+        else
+        return false;
+    }
+
+    void enqueue(int data) {
+        if(rear == size){
+            cout<<"empty";
+        }
+        else{
+            arr[rear] = data;
+            rear = rear+1;
+        }
+    }
+
+    int dequeue() {
+        if(frontIndex == rear){
+            return -1;
+        }
+        else{
+            int ans = arr[frontIndex];
+            frontIndex = frontIndex+1;
+            if (frontIndex == rear){
+                frontIndex = 0;
+                rear = 0;
+            }
+            return ans;
+        }
+    }
+
+    int front() {
+        if(frontIndex == rear){
+            return -1;
+        }
+        else return arr[frontIndex];
+    }
+};
